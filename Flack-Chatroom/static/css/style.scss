@@ -1,0 +1,149 @@
+$white: #fff;
+$grey: #313131;
+$lightBlue: #fafafa;
+$fullScreen: 100vh;
+
+body, html {
+     height: $fullScreen;
+}
+
+/* Modify navbar */
+.navbar {
+     background-color: $white;
+     box-shadow: 0px 10px 10px -2px rgba(0, 0, 0, 0.1);
+}
+/* End modify */
+
+
+/* Login */
+.split {
+     height: $fullScreen;
+     width: 50%;
+     position: fixed;
+     z-index: 1;
+     top: 0;
+     overflow-x: hidden;
+     padding-top: 20px;
+}
+   
+.left {
+     left: 0;
+     background-color: $lightBlue;
+}
+   
+.right {
+     right: 0;
+     background-color: $white;
+}
+   
+.centered {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     text-align: center;
+}
+   
+.centered img {
+     width: 150px;
+     border-radius: 50%;
+}
+/* End login */
+
+
+/* Error screen */
+.error-split {
+     height: $fullScreen;
+     position: fixed;
+     z-index: 1;
+     top: 0;
+     overflow-x: hidden;
+}
+   
+.error-left {
+     width: 50%;
+     left: 0;
+     background-color: $lightBlue;
+}
+   
+.error-right {
+     width: 50%;
+     right: 0;
+     background-color: $white;
+}
+   
+.error-centered {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     text-align: center;
+}
+/* End error screen */
+
+/* Index */
+.indexSplit {
+     height: $fullScreen;
+     position: fixed;
+     z-index: 1;
+     top: 0;
+     overflow-x: hidden;
+}
+   
+.indexLeft {
+     width: 30%;
+     left: 0;
+     background-color: $lightBlue;
+     padding-left: 2em;
+}
+   
+.indexRight {
+     width: 70%;
+     right: 0;
+     background-color: $white;
+     padding-left: 2em;
+}
+   
+.indexCentered {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     text-align: center;
+}
+/* End index */
+
+
+/* Chatroom */
+.list-group {
+     display: flex;
+     flex-direction: column;
+     padding-left: 0;
+     margin-bottom: 5px;
+}
+
+#chat {
+     border: transparent;
+}
+
+.upload-btn-wrapper {
+     position: relative;
+     overflow: hidden;
+     display: inline-block;
+}
+   
+.upload-btn-wrapper input[type=file] {
+     font-size: 100px;
+     position: absolute;
+     left: 0;
+     top: 0;
+     opacity: 0;
+}
+
+.channelList {
+     font-size: 14px;
+}
+
+.userList {
+     font-size: 14px;
+}

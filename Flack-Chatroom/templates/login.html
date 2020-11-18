@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+     Flack
+{% endblock %}
+
+{% block content %}
+     <!-- Left screen -->
+     <div class="split left">
+          <div class="centered">
+               <h2><i class="far fa-comment"></i> Flack</h2>
+               <p>
+                    <small>
+                         A CS50W Chatroom
+                    </small>
+               </p>
+               <p>
+                    <small>
+                         Made with <span style="color: #ea4335;"><i class="fas fa-heart"></i></span> by <a href="https://adiurdar.com">Adi Urdar</a>
+                    </small>
+               </p>
+          </div>
+     </div>
+        
+     <!-- Right screen -->
+     <div class="split right">
+          <div class="centered">
+               <!-- Title -->
+               <p class="lead">Log in to start chatting!</p>
+               
+               <!-- Login form -->
+               <form action="/login" method="POST">
+                    <div class="form-group">
+                         <input type="text" class="form-control" id="username" name="username" autofocus aria-describedby="userHelp">
+                         <small id="userHelp" class="form-text text-muted">Choose a username and start chatting.</small>
+                    </div>
+                    <button class="btn btn-primary" type="submit"><i class="fas fa-sign-in-alt"></i> Log In</button>
+               </form>
+          </div>
+     </div>
+
+{% endblock %}

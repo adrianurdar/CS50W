@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block head %}
+     <script src="../static/js/users.js"></script>
+{% endblock %}
+
+{% block title %}
+     {{ session.current_channel }}
+{% endblock %}
+
+{% block content %}
+     <div class="indexSplit indexLeft">
+          <div>
+               <p style="padding-top: 5em;">
+                    <strong>Channel</strong>
+                    <a id="newChannel" class="ml-3" href="/" data-toggle="tooltip" data-placement="top" title="Add a new channel"><i class="far fa-plus-square"></i></a>
+               </p>
+               {% for channel in channels %}
+                    <p class="channelList">     
+                         <a href="/channels/{{ channel }}"># {{ channel }}</a>
+                    </p>
+               {% endfor %}
+          </div>
+          <div>
+               <p style="padding-top: 5em;">
+                    <strong>Users</strong>
+               </p>
+               {% for user in users %}
+                    <p class="userList">     
+                         <a href="/users/{{ user }}">@ {{ user }}</a>
+                    </p>
+               {% endfor %}
+          </div>
+     </div>
+
+     <div class="indexSplit indexRight">
+          <div style="padding-top: 5em;">
+               <p class="lead">
+                    <strong>
+                         # {{ session.current_channel }}
+                    </strong>
+                    <span class="float-right">
+                         <button id="leave" type="button" class="btn btn-link mr-3" data-toggle="tooltip" data-placement="left" title="Leave channel">
+                              <i class="far fa-times-circle"></i>
+                         </button>
+                    </span>
+               </p>
+          </div>
+     
+          <div style="padding-right: 1.5em;">
+               <div id="chat-box" class="list-group">
+               {# https://jinja.palletsprojects.com/en/2.11.x/templates/#whitespace-control
+                    Minus(-) used to strip all the whitespace 
+                    Only if there are messages, render it.
+               #}
+             
+                    <textarea id="chat" cols="30" rows="24" tabindex="-1" style="resize: none;" readonly>
+                         {%- if messages -%} 
+                              {%- for message in messages -%}
+                                   {{ message[1] }} @ {{ message[0] }}: {{ message[2] }} {{ '\n' }}
+                              {%- endfor -%}
+                              {{ '----- Previous messages -----' }}{{- '\n' -}}
+                         {%- endif -%}
+                    </textarea>
+               </div>
+     
+               <div id="message-box">
+                    <div class="form-border">
+                         <div class="form-row">
+                              <div class="form-group col-sm">
+                                   <div class="input-group">
+                                        <input id="comment" class="form-control" size="50" autocomplete="off" autofocus>
+                                   </div>
+                              </div>
+                              <div class="form-group col-sm-2">
+                                   <button id="send-button" class="btn btn-link" type="reset"><i class="far fa-paper-plane" style="font-size: 21px;"></i></button>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+
+     <script>
+          $(function () {
+               $('[data-toggle="tooltip"]').tooltip()          
+          })
+     </script>
+
+{% endblock %}

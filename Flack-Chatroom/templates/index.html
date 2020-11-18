@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+     Flack Chat
+{% endblock %}
+
+{% block content %}
+     <div class="indexSplit indexLeft">
+          <div>
+               <p style="padding-top: 5em;">
+                    <strong>Channel</strong>
+                    <a id="newChannel" class="ml-3" href="/" data-toggle="tooltip" data-placement="top" title="Add a new channel"><i class="far fa-plus-square"></i></a>
+               </p>
+               {% for channel in channels %}
+                    <p>     
+                         <a href="/channels/{{ channel }}"># {{ channel }}</a>
+                    </p>
+               {% endfor %}
+          </div>
+     </div>
+
+     <div class="indexSplit indexRight">
+          <div class="indexCentered">
+               <p class="lead">Join an existing channel or create a new one</p>
+               <form action="/create" method="post">
+                    <div class="form-group">
+                         <input type="text" class="form-control" name="channel" id="channel" autofocus>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Create</button>
+          </div>
+     </form>          
+     </div>
+
+
+     <script>
+          $(function () {
+               $('[data-toggle="tooltip"]').tooltip()
+          })
+
+          if (localStorage.getItem('last_channel')) {
+               // Redirect to last channel
+               let channel = localStorage.getItem('last_channel');    
+               window.location.replace('/channels/' + channel);   
+          }
+    </script>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+     Error
+{% endblock %}
+
+{% block content %}
+     <div class="error-split error-left">
+          <div class="error-centered">
+               <img src="../static/img/error.svg" width="400px;">
+          </div>
+     </div>
+
+     <div class="error-split error-right">
+          <div class="error-centered text-left">
+               <h4>The Server isn't Feeling Well</h4>
+               <p>It's code {{ code }} and the {{ message }}</p>
+               <a href="/"> 
+                    <button class="btn btn-primary" type="button"><i class="fas fa-undo-alt"></i> Go back</button>
+               </a>
+          </div>
+     </div>
+{% endblock %}
