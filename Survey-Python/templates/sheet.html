@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.cs" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3">Sheet</h1>
+
+    <!-- http://getbootstrap.com/docs/4.1/components/tables/ -->
+    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+        <div class="row">
+            <div class="col-sm-12 col-md-6"></div>
+            <div class="col-sm-12 col-md-6"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table dataTable no-footer" id="DataTables_Table_0" role="grid">
+                    <thead>
+                        <tr>
+                            <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 614px;">
+                                Name
+                            </th>
+
+                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="House: activate to sort column ascending" style="width: 307px;">
+                                House
+                            </th>
+
+                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 315px;">
+                                Position
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for student in students %}
+
+                        <tr class="odd">
+                            <td class="sorting_1">{{ student[0] }}</td>
+                            <td>{{ student[1] }}</td>
+                            <td>{{ student[2] }}</td>
+                        </tr>
+
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-5"></div>
+            <div class="col-sm-12 col-md-7"></div>
+        </div>
+    </div>
+
+
+{% endblock %}
