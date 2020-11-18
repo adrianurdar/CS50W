@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<div class="container">
+     <div class="row">
+          <div class="col-sm text-right">
+               <h1>{{bookInfo[0]['title']}}</h1>
+               <p>Author: {{bookInfo[0]['author']}}</p>
+               <p>Published: {{bookInfo[0]['year']}}</p>
+               <p>ISBN: {{bookInfo[0]['isbn']}}</p>
+
+               <hr>
+
+               <!-- Review form -->
+               <p class="lead">We want to know what you think</p>
+               <form method="post" action="/book/{{ bookInfo[0]['isbn'] }}">
+                    <div class="form-group">
+                         <div>
+                              <small>Your rating: </small>
+                         </div>
+                         <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="rating" id="rating1" value="1">
+                              <label class="form-check-label" for="rating1">1</label>
+                         </div>
+                         <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="rating" id="rating2" value="2">
+                              <label class="form-check-label" for="rating2">2</label>
+                         </div>
+                         <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="rating" id="rating3" value="3">
+                              <label class="form-check-label" for="rating3">3</label>
+                         </div>
+                         <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="rating" id="rating4" value="4">
+                              <label class="form-check-label" for="rating4">4</label>
+                         </div>
+                         <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="rating" id="rating5" value="5">
+                              <label class="form-check-label" for="rating5">5</label>
+                         </div>
+                    </div>
+                    <div class="form-group">
+                         <div>
+                              <small>Your comment:</small>
+                         </div>
+                         <textarea class="form-control" width="100%" id="comment" name="comment" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2">Submit Review</button>
+               </form>
+          </div>
+          
+          <!-- Cover images from http://covers.openlibrary.org -->
+          <div class="col-sm text-center">
+               <img src="http://covers.openlibrary.org/b/isbn/{{ bookInfo[0]['isbn'] }}-L.jpg">
+          </div>
+          
+          <!-- GoodReads Reviews -->
+          <div class="col-sm text-left">
+               <div>
+                    <p class="lead">GoodReads Reviews</p>
+                    <p>Number of ratings: {{ bookInfo[1]['ratings_count'] }}</p>
+                    <p>Average rating score: {{ bookInfo[1]['average_rating'] }} / 5</p>
+                    <small><a href="https://www.goodreads.com/search?q={{ bookInfo[0]['title'] }}">More on GoodReads.com</a></small>
+               </div>
+          </div>
+     </div>
+
+     <hr>
+
+     <!-- Reviews from reviews db -->
+     <p class="lead">See what others are saying...</p>
+     <table class="table">
+          <thead>
+               <tr>
+                    <th scope="col">Rating</th>
+                    <th scope="col">Review</th>
+               </tr>
+          </thead>
+          {% for review in reviews %}
+               <tbody>
+                    <tr>
+                         <td>{{ review['rating'] }} out of 5</td>
+                         <td>{{ review['comment'] }}</td>
+                    </tr>
+               </tbody>
+          {% endfor %}
+     </table>
+</div>
+
+{% endblock %}

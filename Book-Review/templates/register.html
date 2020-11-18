@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<div class="container">
+     <div class="row">
+          <div class="col-sm-7">
+               <h1>Join BookReview for Free</h1>
+               <p>or <a href="login">login</a> to your existing account</p>
+
+               <form class="needs-validation text-left" novalidate action="/register" method="post">
+                    <div class="form-group">
+                         <label for="validationUsername"></label>
+                         <input autocomplete="off" autofocus class="form-control" id="validationUsername" name="username" placeholder="Username" type="text" required>
+                         <div class="invalid-feedback">
+                              Please choose a username.
+                         </div>
+                    </div>
+                    <div class="form-group">
+                         <label for="validationPassword"></label>
+                         <input class="form-control" id="validationPassword" name="password" placeholder="Password" type="password" required>
+                         <div class="invalid-feedback">
+                              Please choose a password.
+                         </div>
+                    </div>
+                    <div class="form-group">
+                         <label for="validationConfirmation"></label>
+                         <input class="form-control" id="validationConfirmation" name="confirmation" placeholder="Confirm password" type="password" required>
+                         <div class="invalid-feedback">
+                              Please confirm your password.
+                         </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Register</button>
+               </form>
+          </div>
+          <div class="col-sm-5">
+               <img class="img-fluid" src="../static/images/register.svg">
+          </div>
+     </div>
+</div>
+
+
+     <script>
+     // Example starter JavaScript for disabling form submissions if there are invalid fields
+     (function() {
+          'use strict';
+          window.addEventListener('load', function() {
+               // Fetch all the forms we want to apply custom Bootstrap validation styles to
+               var forms = document.getElementsByClassName('needs-validation');
+               // Loop over them and prevent submission
+               var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                         if (form.checkValidity() === false) {
+                              event.preventDefault();
+                              event.stopPropagation();
+                         }
+                         form.classList.add('was-validated');
+                    }, false);
+               });
+          }, false);
+     })();
+
+     // Check if the username is available
+     $('document').ready(function() {
+          $('form').on('submit', function(e) {
+               e.preventDefault();
+               let input = document.querySelector('[name=username]');
+               let username = $("#username").val();
+               $.get('/check?username=' + input.value, function(response) {
+                    if (response == false) {
+                         alert('username taken');
+                         document.getEmentById('register').reset();
+                         $('#username').focus();
+                    }
+                    else
+                    {
+                         (document).getElementById('register').submit();
+                    }
+               });
+          });
+     });
+     </script>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+     <!-- Title -->
+     <title>Book Review | CS50W Project 1</title>
+
+     <!-- Favicon -->
+     <link rel="icon" type="image/svg" href="static/images/bookLogo.svg" />
+
+     <!-- Metadata -->
+     <meta name="viewport" content="initial-scale=1, width=device-width">
+
+     <!-- Bootstrap -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+     <!-- CSS -->
+     <link href="/static/styles.css" rel="stylesheet">
+
+     <!-- Font Awesome -->
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+
+<body>
+     <!-- Navbar -->
+     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fff;">
+          {% if session.user_id %}
+          <a class="navbar-brand" href="/dashboard">
+               <img src="../static/images/bookLogo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+               BookReview
+          </a>
+          <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+               <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbar">
+               <ul class="navbar-nav ml-auto mt-2">
+                    <li class="nav-item"><a class="nav-link" href="/dashboard"> Search</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+               </ul>
+          {% else %}
+               <a class="navbar-brand" href="/">
+                    <img src="../static/images/bookLogo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+                    BookReview
+               </a>
+               <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                    <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="navbar-nav ml-auto mt-2">
+                         <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                         <li class="nav-item"><a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i> Log In</a></li>
+                    </ul>
+          {% endif %}
+          </div>
+     </nav>
+
+     <main class="container-fluid p-5">
+          <div class="jumbotron">
+          {% block main %}{% endblock %}
+          </div>
+     </main>
+
+     <footer class="small text-center text-muted">
+          Made with <span style="color: #ea4335;"><i class="fas fa-heart"></i></span> by <a href="https://adiurdar.com">Adi Urdar</a>.
+     </footer>
+
+     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>

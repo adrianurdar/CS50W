@@ -1,0 +1,24 @@
+/* Modify navbar */
+.navbar {
+  box-shadow: 0px 10px 10px -2px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+/* center form controls */
+main .form-control {
+  display: inline-block;
+  /* override Bootstrap's 100% width for form controls */
+  width: auto;
+}
+
+main {
+  /* scroll horizontally as needed */
+  overflow-x: auto;
+}
+
+main img {
+  /* constrain images on small screens */
+  max-width: 100%;
+}
+
+/*# sourceMappingURL=styles.css.map */
